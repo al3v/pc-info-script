@@ -1,17 +1,21 @@
 #!/bin/bash
 
-echo "The current user ID is: $USER "
-echo
-
 echo "Today is $(date)"
 echo
 
-echo "Linux distribution information: 
-$(sudo lsb_release -a)"
+echo "These users are currently conected:"
+w | cut -d " " -f 1 - | grep -v USER | sort -u
 echo
 
 echo "More info about the users: "
 w
+echo
+
+echo "The current user ID is: $USER "
+echo
+
+echo "Linux distribution information: 
+$(sudo lsb_release -a)"
 echo
 
 mem=$(free -m)
@@ -36,4 +40,3 @@ echo
 
 echo "Information about bios: $(sudo dmidecode -t bios)"
 echo
-
