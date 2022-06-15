@@ -14,6 +14,12 @@ echo
 echo "The current user ID is: $USER "
 echo
 
+echo "This is `uname -s` running on a `uname -m` processor."
+echo
+
+echo "This is uptime information: $(uptime)"
+echo
+
 echo "Linux distribution information: 
 $(sudo lsb_release -a)"
 echo
