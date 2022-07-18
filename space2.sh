@@ -62,14 +62,14 @@ percent2=$((percent/5))
 
 
 
-if [ "$char" < 25 ]; then
+if (( "$char" < 25 )); then
 	for (( i =0; i < 25 - $char; i++));
 	do
 	name="$name⠀"
 	done		
-elif [ "$char" == 25 ]; then
+elif (( "$char" == 25 )); then
 	name="$name"	
-elif [ "$char" > 25 ]; then
+elif (( "$char" > 25 ])); then
 	name="${name:0:25}"
 fi
 
@@ -110,15 +110,10 @@ DISK_2_used=$(df -m --output=source,used,avail | awk ''NR==3' {print $2}' )
 DISK_2_avail=$(df -m --output=source,used,avail | awk ''NR==3' {print $3}' )
 DISK2_total=$(($DISK_2_used + $DISK_2_avail))
 
-#DISK 3
-DISK_3_name=$(df -m --output=source,used,avail | awk ''NR==4' {print $1}' )
-DISK_3_used=$(df -m --output=source,used,avail | awk ''NR==4' {print $2}' )
-DISK_3_avail=$(df -m --output=source,used,avail | awk ''NR==4' {print $3}' )
-DISK3_total=$(($DISK_3_used + $DISK_3_avail))
+
 
 graph $DISK_1_used $DISK1_total $DISK_1_name
 graph $DISK_2_used $DISK2_total $DISK_2_name
-graph $DISK_3_used $DISK3_total $DISK_3_name
 echo
 echo
 
